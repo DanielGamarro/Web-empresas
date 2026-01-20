@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbería Urbana [Tu Barrio] | Cortes y Barba</title>
+    <meta name="description" content="La barbería de referencia en tu barrio. Degradados, arreglo de barba y afeitado clásico. Reserva tu sillón.">
+    <!-- Nueva tipografía: Anton para títulos (fuerza) e Inter para lectura -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ESTILOS VISUALES (Dark & Industrial) --- */
+        :root {
+            --negro-fondo: #121212;
+            --gris-oscuro: #1e1e1e;
+            --gris-claro: #b0b0b0;
+            --acento: #f0a500; /* Amarillo Ámbar/Oro */
+            --blanco: #ffffff;
+            --borde-radio: 4px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif; /* Tipografía moderna y limpia */
+            background-color: var(--negro-fondo);
+            color: var(--gris-claro);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Anton', sans-serif; /* Títulos con mucho carácter */
+            color: var(--blanco);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0;
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--acento);
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 30px;
+        }
+
+        a { text-decoration: none; transition: 0.3s; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- BOTONES --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--acento);
+            color: var(--negro-fondo);
+        }
+        .btn-primary:hover {
+            background-color: #d18e00;
+            transform: scale(1.05);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--acento);
+            color: var(--acento);
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background-color: var(--acento);
+            color: var(--negro-fondo);
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--gris-oscuro);
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--blanco);
+            letter-spacing: 2px;
+        }
+        .logo span { color: var(--acento); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=2074');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+            border-bottom: 5px solid var(--acento);
+        }
+
+        .hero h1 {
+            font-size: 4.5rem; /* Aumentado para aprovechar la fuente Anton */
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--blanco);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* --- TRUST ICONS --- */
+        .trust-bar {
+            background-color: #000;
+            padding: 30px 0;
+            text-align: center;
+        }
+        .trust-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--blanco);
+            font-weight: bold;
+        }
+        .trust-item span { color: var(--acento); font-size: 1.5rem; }
+
+        /* --- SERVICIOS --- */
+        .services {
+            padding: 80px 0;
+            background-color: var(--negro-fondo);
+        }
+        .section-center { text-align: center; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background-color: var(--gris-oscuro);
+            padding: 30px;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+        .service-card:hover {
+            border-color: var(--acento);
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 { color: var(--acento); margin-bottom: 15px; }
+        .price {
+            display: block;
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: var(--blanco);
+            font-weight: bold;
+        }
+
+        /* --- TESTIMONIOS --- */
+        .testimonials {
+            background-color: var(--gris-oscuro);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .testimonial-item {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            border-left: 4px solid var(--acento);
+            padding-left: 20px;
+            text-align: left;
+        }
+        .testimonial-item p { font-style: italic; font-size: 1.1rem; color: var(--blanco); }
+        .testimonial-item small { color: var(--acento); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+
+        /* --- CONTACTO Y UBICACIÓN --- */
+        .contact {
+            padding: 80px 0;
+            background-color: #000;
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: center; /* Centrado al quitar el formulario */
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .contact-info { 
+            text-align: center; /* Texto centrado para mayor impacto */
+            max-width: 600px;
+        }
+
+        .info-block { margin-bottom: 40px; }
+        .info-block strong { color: var(--acento); display: block; margin-bottom: 10px; font-size: 1.3rem; }
+        .info-block span, .info-block a { font-size: 1.1rem; color: var(--blanco); display: block; }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--negro-fondo);
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; gap: 15px; }
+            .hero h1 { font-size: 2.5rem; }
+            .contact-container { flex-direction: column; }
+            .btn { width: 100%; margin-bottom: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">THE <span>BARBER</span> SHOP</div>
+            <div>
+                <a href="#reservar" class="btn btn-primary">Reserva tu Sillón</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <h1>Tu estilo, tu sello.</h1>
+            <p>La barbería del barrio donde los cortes clásicos se encuentran con el estilo urbano moderno. Buena música y tijeras afiladas.</p>
+            <div class="hero-btns">
+                <a href="#servicios" class="btn btn-outline">Ver Servicios</a>
+                <!-- Botón de WhatsApp eliminado -->
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <div class="trust-bar">
+        <div class="container trust-grid">
+            <div class="trust-item"><span>✂️</span> Precisión Máxima</div>
+            <div class="trust-item"><span>📍</span> Centro del Barrio</div>
+        </div>
+    </div>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <div class="section-center">
+                <h2>Nuestros Servicios</h2>
+                <p>Sin complicaciones. Tú eliges, nosotros ejecutamos.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Corte Degradado (Fade)</h3>
+                    <p>El rey de la casa. Degradado perfecto con máquina y tijera. Acabado pulido y moderno.</p>
+                    <span class="price">15€</span>
+                </div>
+                <div class="service-card">
+                    <h3>Arreglo de Barba</h3>
+                    <p>Perfilado con navaja, recorte a tijera y tratamiento con aceites esenciales.</p>
+                    <span class="price">10€</span>
+                </div>
+                <div class="service-card">
+                    <h3>Afeitado Clásico</h3>
+                    <p>Experiencia ritual: toalla caliente, espuma de brocha y navaja tradicional.</p>
+                    <span class="price">18€</span>
+                </div>
+                <div class="service-card">
+                    <h3>Pack Completo</h3>
+                    <p>Corte de pelo + Arreglo de barba. Sales nuevo en 45 minutos.</p>
+                    <span class="price">22€</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Lo que dicen los clientes</h2>
+            <br>
+            <div class="testimonial-item">
+                <p>"Llevaba tiempo buscando alguien que entendiera cómo quería el degradado. Javi lo clavó a la primera. El ambiente es brutal."</p>
+                <small>- Marcos D., Vecino del barrio</small>
+            </div>
+            <div class="testimonial-item">
+                <p>"Puntuales y profesionales. Me encanta poder reservar e ir directo sin esperar mil horas. El arreglo de barba es top."</p>
+                <small>- David S.</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="reservar" class="contact">
+        <div class="container">
+            <div class="section-center">
+                <h2>¿Listo para el cambio?</h2>
+            </div>
+            <br><br>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-block">
+                        <strong>📍 Pásate por aquí</strong>
+                        <span>Calle del Comercio, 23 (Frente al Parque)</span>
+                        <span>Barrio Centro</span>
+                    </div>
+                    
+                    <div class="info-block">
+                        <strong>⏰ Horario Non-Stop</strong>
+                        <span>L-V: 10:00 - 20:30</span>
+                        <span>Sábados: 10:00 - 14:00</span>
+                    </div>
+
+                    <div class="info-block">
+                        <strong>📞 Llama para reservar</strong>
+                        <span style="font-size: 2rem; font-weight: bold; margin: 15px 0;">910 000 000</span>
+                        <br>
+                        <a href="tel:910000000" class="btn btn-primary">Llamar Ahora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 The Barber Shop. Estilo y Tradición.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
